@@ -29,7 +29,6 @@ function Header() {
         tempSpan.className = 'temp';
         headerDiv.appendChild(tempSpan);
         //NEED LIVE TEMP TO SHOW UP HERE
-    
 
 }
 
