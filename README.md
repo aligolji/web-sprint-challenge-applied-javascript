@@ -20,7 +20,7 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 
 ### Commits
 
-Commit your code regularly and meaningfully. This helps both you (in case you ever need to return to old code for any number of reasons) and your team lead as the evaluate your solution.
+Commit your code regularly and meaningfully. This helps both you (in case you ever need to return to old code for any number of reasons) and your team lead as they evaluate your solution.
 
 ## Interview Questions
 
@@ -44,16 +44,16 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 #### Repository Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`.
+- [✅] Create a forked copy of this project
+- [✅] Add your team lead as collaborator on Github
+- [✅] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [✅] Create a new branch: `git checkout -b <firstName-lastName>`.
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
 - [ ] Push commits: `git push origin <firstName-lastName>`
 
 #### Launching the App
 
-- [ ] Navigate to the root of the project with your command line
+- [✅] Navigate to the root of the project with your command line
 - [ ] Run `npm install` to download the dependencies listed in the `package.json` file
 - [ ] Run `npm start` to compile the project and serve it
 - [ ] Navigate Chrome to the URL indicated in the output of the `npm start` command
@@ -62,7 +62,7 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 Your finished project must include all of the following requirements:
 
-- [ ] Look through the HTML code and familiarize yourself with the different sections. Some of them already exist, but some need to be filled in. DO NOT add any code to the HTML file itself.
+- [✅] Look through the HTML code and familiarize yourself with the different sections. Some of them already exist, but some need to be filled in. DO NOT add any code to the HTML file itself.
 
 - [ ] Following the instructions in the `components/Header.js` file, create the Header.
 
