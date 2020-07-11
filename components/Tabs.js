@@ -1,8 +1,7 @@
+import axios from 'axios';
+
 // STEP 2: Create tabs
 // -----------------------
-
-import axios from 'axios'
-
 // ✅Using axios send a GET request to the address: https://lambda-times-backend.herokuapp.com/topics
 
 // ✅Once the data is resolved use console logs or breakpoints to review the structure.
@@ -40,7 +39,7 @@ axios.get(axiosData)
     .catch(function (error) {
         // debugger
         console.log(error)
-    })
+    });
 
 // const topics = document.querySelector('.topics');        //used to test success of append to div.topics
 // console.log(topics);
