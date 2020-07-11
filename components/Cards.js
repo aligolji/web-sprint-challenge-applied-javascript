@@ -31,20 +31,53 @@ axios.get(axiosData)
     .then(function (response) {
         // debugger
         console.log(response.data.articles)
+        const articlesFromData = response.data.articles;
+        console.log(articlesFromData);
 
-        const javascriptArray = response.data.articles['javascript'];
-        const bootstrapArray = response.data.articles['bootstrap'];
-        const technologyArray = response.data.articles['technology'];
-        const jqueryArray = response.data.articles['jquery'];
-        const nodeArray = response.data.articles['node'];
+        const articleArray = [articlesFromData];
+        console.log(articleArray)
 
-        const articleArray = [javascriptArray, bootstrapArray, technologyArray,jqueryArray,nodeArray];
+        articleArray.forEach(element => {
+            const newCard = function cardMaker({articlesFromData}) {
+                const articleCard = document.createElement('div');
+                articleCard.className = 'card';
+                // articleCard.addEventListener('click', () => {
+                //     // console.log(data.articles //need to get object from 'articles' array then the value of 'headline' key);
+                // });
+        
+                const headline = document.createElement('div');
+                headline.className = 'headline';
+                headline.textContent = articlesFromData.headline;
+                articleCard.appendChild(headline);
+        
+        
+                const author = document.createElement('div');
+                author.className = 'author';
+                articleCard.appendChild(author);
+        
+        
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'img-container';
+                author.appendChild(imgContainer);
+        
+        
+                const authorImage = document.createElement('img');
+                authorImage.src = articlesFromData.authorPhoto;
+                imgContainer.appendChild(authorImage);
+        
+        
+                const authorNamDiv = document.createElement('span');
+                authorNamDiv.textContent = 'By' + articlesFromData.authorName;
+                author.appendChild(authorNamDiv);
+                
+                entryPointCards.appendChild(newCard);
 
-        console.log(articleArray);
+                return newCard
 
+            }
+        
+        })
 
-
-        // const newCard = function cardMaker({articles}) {}
 
     })
 
@@ -56,50 +89,7 @@ axios.get(axiosData)
     // debugger
 
 
-    function cardMaker({articles}) {
-
-
-        const articleCard = document.createElement('div');
-        articleCard.className = 'card';
-        // articleCard.addEventListener('click', () => {
-        //     // console.log(data.articles //need to get object from 'articles' array then the value of 'headline' key);
-        // });
-
-        const headline = document.createElement('div');
-        headline.className = 'headline';
-        headline.textContent = articles.headline;
-        articleCard.appendChild(headline);
-
-
-        const author = document.createElement('div');
-        author.className = 'author';
-        articleCard.appendChild(author);
-
-
-        const imgContainer = document.createElement('div');
-        imgContainer.className = 'img-container';
-        author.appendChild(imgContainer);
-
-
-        const authorImage = document.createElement('img');
-        authorImage.src = articles.authorPhoto;
-        imgContainer.appendChild(authorImage);
-
-
-        const authorNamDiv = document.createElement('span');
-        authorNamDiv.textContent = 'By' + articles.authorName;
-        author.appendChild(authorNamDiv);
-
-        return articleCard;
-    }
-
-    
-
-
     console.log('EVERTYHING WORKS THROUGH HERE');
 
 
-      // const articlesDataSet = axiosArticlesResponse.data;
-        // articlesDataSet.forEach(article => {
-        //     const card = cardCreator({article});
-    // })
+console.log(entryPointCards)
