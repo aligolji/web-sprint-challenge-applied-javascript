@@ -25,7 +25,7 @@ const axiosData = 'https://lambda-times-backend.herokuapp.com/topics';
 axios.get(axiosData)
     .then(function (axiosResponse) {
         // debugger
-        // console.log(axiosResponse.data.topics);  //used for texting data retrieval success
+        // console.log(axiosResponse.data.topics);  //used for testing data retrieval success
         const topicsItems = axiosResponse.data.topics;        
         topicsItems.map((topicsItem) => {
             const newTab = document.createElement('div');

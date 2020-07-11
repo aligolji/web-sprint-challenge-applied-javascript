@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // STEP 3: Create article cards.
 // -----------------------
-// Send an HTTP GET request to the following address: https://lambda-times-backend.herokuapp.com/articles
-// Study the response data you get back, closely.
+// ✅Send an HTTP GET request to the following address: https://lambda-times-backend.herokuapp.com/articles
+// ✅Study the response data you get back, closely.
 // You will be creating a card for each article in the response.
 // This won't be as easy as just iterating over an array though.
 //
@@ -23,34 +23,51 @@ import axios from 'axios';
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
-//================AXIOS DATA RETRIEVAL========================
-const axiosArticlesData = 'https://lambda-times-backend.herokuapp.com/articles'
+const entryPointCards = document.querySelector('.cards-container');
+const axiosData = 'https://lambda-times-backend.herokuapp.com/articles';
 
-axios.get(axiosArticlesData)
-    .then(function (axiosArticlesResponse) {
-        debugger
-        console.log(axiosArticlesResponse.data)
+
+axios.get(axiosData)
+    .then(function (response) {
+        // debugger
+        console.log(response.data.articles)
+
+        const javascriptArray = response.data.articles['javascript'];
+        const bootstrapArray = response.data.articles['bootstrap'];
+        const technologyArray = response.data.articles['technology'];
+        const jqueryArray = response.data.articles['jquery'];
+        const nodeArray = response.data.articles['node'];
+
+        const articleArray = [javascriptArray, bootstrapArray, technologyArray,jqueryArray,nodeArray];
+
+        console.log(articleArray);
+
+
+
+        // const newCard = function cardMaker({articles}) {}
+
     })
+
     .catch(function (error) {
-        debugger
+        // debugger
         console.log(error)
     });
 
-    debugger
+    // debugger
 
-    //=====================END AXIOS ============================
 
-    //-----------------CREATE ARTICLE CARDS BELOW--------------------
+    function cardMaker({articles}) {
 
-    function cardCreator({articleObject}) {
 
         const articleCard = document.createElement('div');
         articleCard.className = 'card';
-
+        // articleCard.addEventListener('click', () => {
+        //     // console.log(data.articles //need to get object from 'articles' array then the value of 'headline' key);
+        // });
 
         const headline = document.createElement('div');
         headline.className = 'headline';
-        headline.textContent = articleObject.headline;
+        headline.textContent = articles.headline;
         articleCard.appendChild(headline);
 
 
@@ -65,16 +82,24 @@ axios.get(axiosArticlesData)
 
 
         const authorImage = document.createElement('img');
-        authorImage.src = articleObject.authorPhoto;
+        authorImage.src = articles.authorPhoto;
         imgContainer.appendChild(authorImage);
 
 
-        const authorNameDiv = document.createElement('span');
-        authorNameDiv.textContent = 'By' + articleObject.authorName;
-        author.appendChild(authorNameDiv);
+        const authorNamDiv = document.createElement('span');
+        authorNamDiv.textContent = 'By' + articles.authorName;
+        author.appendChild(authorNamDiv);
 
-
-
-
-        returns articleCard
+        return articleCard;
     }
+
+    
+
+
+    console.log('EVERTYHING WORKS THROUGH HERE');
+
+
+      // const articlesDataSet = axiosArticlesResponse.data;
+        // articlesDataSet.forEach(article => {
+        //     const card = cardCreator({article});
+    // })
