@@ -20,8 +20,8 @@ function Header() {
 
     const dateSpan = document.createElement('span');
     dateSpan.className = 'date';
+    dateSpan.textContent = 'March 28, 2020';
     headerDiv.appendChild(dateSpan);
-        //NEED LIVE DATE TO SHOW UP HERE
 
     const titleH1 = document.createElement('h1');
     titleH1.textContent = 'Lambda Times';
@@ -29,8 +29,8 @@ function Header() {
 
     const tempSpan = document.createElement('span');
     tempSpan.className = 'temp';
+    tempSpan.textContent = '98°';
     headerDiv.appendChild(tempSpan);
-        //NEED LIVE TEMP TO SHOW UP HERE
 
     return headerDiv;
 

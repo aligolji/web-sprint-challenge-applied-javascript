@@ -30,55 +30,12 @@ const axiosData = 'https://lambda-times-backend.herokuapp.com/articles';
 axios.get(axiosData)
     .then(function (response) {
         // debugger
-        console.log(response.data.articles)
-        const articlesFromData = response.data.articles;
-        console.log(articlesFromData);
-
-        const articleArray = [articlesFromData];
-        console.log(articleArray)
-
-        articleArray.forEach(element => {
-            const newCard = function cardMaker({articlesFromData}) {
-                const articleCard = document.createElement('div');
-                articleCard.className = 'card';
-                // articleCard.addEventListener('click', () => {
-                //     // console.log(data.articles //need to get object from 'articles' array then the value of 'headline' key);
-                // });
-        
-                const headline = document.createElement('div');
-                headline.className = 'headline';
-                headline.textContent = articlesFromData.headline;
-                articleCard.appendChild(headline);
-        
-        
-                const author = document.createElement('div');
-                author.className = 'author';
-                articleCard.appendChild(author);
-        
-        
-                const imgContainer = document.createElement('div');
-                imgContainer.className = 'img-container';
-                author.appendChild(imgContainer);
-        
-        
-                const authorImage = document.createElement('img');
-                authorImage.src = articlesFromData.authorPhoto;
-                imgContainer.appendChild(authorImage);
-        
-        
-                const authorNamDiv = document.createElement('span');
-                authorNamDiv.textContent = 'By' + articlesFromData.authorName;
-                author.appendChild(authorNamDiv);
-                
-                entryPointCards.appendChild(newCard);
-
-                return newCard
-
-            }
-        
-        })
-
-
+        const articles = response.data.articles;
+        for (let article in articles) {
+            articles[article].forEach((artObject) => {
+                entryPointCards.appendChild(cardMaker(artObject));
+            })
+        }
     })
 
     .catch(function (error) {
@@ -88,8 +45,42 @@ axios.get(axiosData)
 
     // debugger
 
+    function cardMaker(articlesFromData) {
+        const articleCard = document.createElement('div');
+        articleCard.className = 'card';
 
-    console.log('EVERTYHING WORKS THROUGH HERE');
+
+        const headline = document.createElement('div');
+        headline.className = 'headline';
+        headline.textContent = articlesFromData.headline;
+        articleCard.appendChild(headline);
+        articleCard.addEventListener('click', () => {
+            console.log(headline.textContent);
+        })
 
 
-console.log(entryPointCards)
+        const author = document.createElement('div');
+        author.className = 'author';
+        articleCard.appendChild(author);
+
+
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'img-container';
+        author.appendChild(imgContainer);
+
+
+        const authorImage = document.createElement('img');
+        authorImage.src = articlesFromData.authorPhoto;
+        imgContainer.appendChild(authorImage);
+
+
+        const authorNamDiv = document.createElement('span');
+        authorNamDiv.textContent = 'By' + articlesFromData.authorName;
+        author.appendChild(authorNamDiv);
+        
+        entryPointCards.appendChild(articleCard);
+
+        return articleCard
+
+    }
+
