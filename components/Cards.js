@@ -48,16 +48,14 @@ axios.get(axiosData)
     function cardMaker(articlesFromData) {
         const articleCard = document.createElement('div');
         articleCard.className = 'card';
-
+        articleCard.addEventListener('click', () => {
+            console.log(headline.textContent);
+        })
 
         const headline = document.createElement('div');
         headline.className = 'headline';
         headline.textContent = articlesFromData.headline;
         articleCard.appendChild(headline);
-        articleCard.addEventListener('click', () => {
-            console.log(headline.textContent);
-        })
-
 
         const author = document.createElement('div');
         author.className = 'author';
